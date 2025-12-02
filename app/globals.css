@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Rugged Theme Colors */
+  --color-primary: #556B2F; /* Dark Olive Green */
+  --color-primary-dark: #3B4B21;
+  --color-secondary: #FF8C00; /* Dark Orange */
+  --color-secondary-hover: #E67E00;
+  --color-earth-dark: #2C2C2C;
+  --color-earth-light: #F4F1EA; /* Off-white/Beige */
 }
 
 @media (prefers-color-scheme: dark) {
