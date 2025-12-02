@@ -17,14 +17,30 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
-        <h1 className="mb-4 text-5xl font-bold uppercase tracking-wider text-white md:text-7xl drop-shadow-lg">
-          <span className="text-secondary">Precisión</span> en cada <br />
-          <span className="text-primary-light">Terreno</span>
+        {/* Logo */}
+        <div className="mb-8">
+          <Image
+            src="/images/logo-mg.jpg"
+            alt="Servicios Topográficos MG"
+            width={200}
+            height={200}
+            className="rounded-full border-4 border-secondary shadow-2xl"
+          />
+        </div>
+
+        <h1 className="mb-2 text-5xl font-bold uppercase tracking-wider text-white md:text-7xl drop-shadow-lg">
+          <span className="text-secondary">Ingeniero Topógrafo</span><br />
+          <span className="text-primary-light">Geomático</span>
         </h1>
-        <p className="mb-8 max-w-2xl text-lg font-light text-gray-200 md:text-2xl">
+
+        <p className="mb-2 text-2xl font-bold text-white md:text-3xl uppercase tracking-wide">
+          Servicios Topográficos MG
+        </p>
+
+        <p className="mb-8 max-w-2xl text-lg font-light text-gray-200 md:text-xl">
           Soluciones topográficas integrales para construcción, infraestructura y desarrollo urbano.
         </p>
-        
+
         <div className="flex flex-col gap-4 sm:flex-row">
           <a
             href="#contact"

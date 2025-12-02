@@ -2,14 +2,20 @@ import Hero from "./components/Hero";
 import Services from "./components/Services";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Testimonials from "./components/Testimonials";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-earth-light text-earth-dark">
       <Hero />
-      <Services />
       <About />
+      <Services />
+      <Testimonials />
       <Contact />
+
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
 
       {/* Footer */}
       <footer className="bg-earth-dark text-white py-8">

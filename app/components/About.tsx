@@ -46,7 +46,7 @@ export default function About() {
 
                         <div className="mt-10 grid grid-cols-2 gap-6">
                             <div className="p-4 bg-white/10 rounded-lg border-l-4 border-secondary">
-                                <h4 className="text-2xl font-bold text-white">10+</h4>
+                                <h4 className="text-2xl font-bold text-white">5+</h4>
                                 <p className="text-sm text-gray-400 uppercase tracking-wider">Años de Experiencia</p>
                             </div>
                             <div className="p-4 bg-white/10 rounded-lg border-l-4 border-primary">
