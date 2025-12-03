@@ -24,7 +24,7 @@ const services = [
     {
         title: "Vuelos Fotogramétricos",
         description: "Mapeo aéreo con drones para grandes extensiones y modelos digitales de terreno.",
-        icon: "/images/dron-1.jpg"
+        icon: "/images/photogrammetry-drone.png"
     },
     {
         title: "Puntos GNSS",
