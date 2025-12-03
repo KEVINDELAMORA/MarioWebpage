@@ -1,4 +1,45 @@
+'use client';
+
+import { useState, FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
+
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_email: 'Itgmariogonzalez@gmail.com'
+                },
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+            );
+
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            console.error('Error sending email:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section id="contact" className="py-20 bg-earth-light relative">
             <div className="max-w-7xl mx-auto px-4">
@@ -63,12 +104,15 @@ export default function Contact() {
                     {/* Contact Form */}
                     <div className="bg-earth-dark p-8 rounded-lg shadow-lg text-white">
                         <h3 className="text-2xl font-bold mb-6">Envíenos un Mensaje</h3>
-                        <form className="space-y-4">
+                        <form className="space-y-4" onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
                                 <input
                                     type="text"
                                     id="name"
+                                    required
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     className="w-full rounded-md bg-white/10 border border-white/20 px-4 py-2 text-white focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors"
                                     placeholder="Su nombre"
                                 />
@@ -78,6 +122,9 @@ export default function Contact() {
                                 <input
                                     type="email"
                                     id="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     className="w-full rounded-md bg-white/10 border border-white/20 px-4 py-2 text-white focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors"
                                     placeholder="ejemplo@correo.com"
                                 />
@@ -87,16 +134,33 @@ export default function Contact() {
                                 <textarea
                                     id="message"
                                     rows={4}
+                                    required
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     className="w-full rounded-md bg-white/10 border border-white/20 px-4 py-2 text-white focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors"
                                     placeholder="¿En qué podemos ayudarle?"
                                 ></textarea>
                             </div>
+
                             <button
                                 type="submit"
-                                className="w-full rounded-md bg-secondary px-8 py-3 font-bold text-white transition-all hover:bg-secondary-hover hover:scale-105 shadow-lg uppercase tracking-wide"
+                                disabled={isSubmitting}
+                                className="w-full rounded-md bg-secondary px-8 py-3 font-bold text-white transition-all hover:bg-secondary-hover hover:scale-105 shadow-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Enviar Mensaje
+                                {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                             </button>
+
+                            {submitStatus === 'success' && (
+                                <div className="bg-green-500/20 border border-green-500 text-green-200 px-4 py-3 rounded">
+                                    ¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.
+                                </div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <div className="bg-red-500/20 border border-red-500 text-red-200 px-4 py-3 rounded">
+                                    Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos directamente por WhatsApp.
+                                </div>
+                            )}
                         </form>
                     </div>
 
