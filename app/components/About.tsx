@@ -34,7 +34,7 @@ export default function About() {
 
                         <div className="space-y-6 text-lg text-gray-300 font-light">
                             <p>
-                                En <strong className="text-white">Configuración Topográfica</strong>, combinamos la precisión técnica con la experiencia en campo para ofrecer resultados confiables en cada proyecto.
+                                En <strong className="text-white">Servicios Topográficos MG</strong>, combinamos la precisión técnica con la experiencia en campo para ofrecer resultados confiables en cada proyecto.
                             </p>
                             <p>
                                 Liderado por el <strong>Ing. Mario Humberto Gonzalez Dimas</strong>, nuestro equipo está capacitado para enfrentar los retos más exigentes en topografía, desde levantamientos de predios hasta vuelos fotogramétricos avanzados.

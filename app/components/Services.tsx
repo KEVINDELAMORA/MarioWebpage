@@ -4,7 +4,7 @@ const services = [
     {
         title: "Trazo y Nivelación",
         description: "Establecimiento preciso de ejes y niveles para obras civiles y edificaciones.",
-        icon: "/images/level-road.jpg" // Placeholder, ideally use icons or specific images
+        icon: "/images/level-road.jpg"
     },
     {
         title: "Deslinde de Terrenos",
@@ -24,7 +24,12 @@ const services = [
     {
         title: "Vuelos Fotogramétricos",
         description: "Mapeo aéreo con drones para grandes extensiones y modelos digitales de terreno.",
-        icon: "/images/surveyor-field.jpg" // Reusing image for now
+        icon: "/images/dron-1.jpg"
+    },
+    {
+        title: "Puntos GNSS",
+        description: "Mediciones satelitales de alta precisión para proyectos que requieren coordenadas exactas.",
+        icon: "/images/gnss-equipment.jpg"
     }
 ];
 
